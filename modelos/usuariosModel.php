@@ -25,18 +25,6 @@ class UsuariosModel extends Conexion
 		$stmt = Conexion::conexionDatabase();
 		Conexion::set_names();
 
-		$nombre = $datos["nombre"];
-		$apellido = $datos["apellidos"];
-		$cedula = $datos["cedula"];
-		$telefono = $datos["telefono"];
-		$email = $datos["correo"];
-		$direccion = $datos["direccion"];
-		$cargo = $datos["cargo"];
-		$usuario = $datos["usuario"];
-		$password1 = $datos["password"];
-		$password2 = $datos["password2"];
-		$estado = $datos["estado"];
-
 		$query = "INSERT INTO $tabla VALUES(null,:nombre,:apellidos,:cedula,:telefono,:correo,:direccion,:cargo,:usuario,:password,:password2,now(),:estado);";
 
 
@@ -54,7 +42,39 @@ class UsuariosModel extends Conexion
 
 		$stmt->prepare($query);
 
-		if ($stmt->execute()) {
+		if ($stmt->execute()) 
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	public function editarUsuarioModel($datos, $tabla)
+	{
+		$stmt = Conexion::conexionDatabase();
+		Conexion::set_names();
+
+		$query = "UPDATE $tabla SET (null,nombre= :nombre,apellidos= :apellidos,cedula= :cedula,telefono= :telefono,correo= :correo,direccion= :direccion,cargo= :cargo,usuario= :usuario,password= :password,password2= :password2,estado= :estado WHERE id_usuario = :id_usuario);";
+
+
+		$stmt->bindParam(":id_usuario", $datos["id_usuario"]);
+		$stmt->bindParam(":nombre", $datos["nombre"]);
+		$stmt->bindParam(":apellidos", $datos["apellidos"]);
+		$stmt->bindParam(":cedula", $datos["cedula"]);
+		$stmt->bindParam(":telefono", $datos["telefono"]);
+		$stmt->bindParam(":correo", $datos["correo"]);
+		$stmt->bindParam(":direccion", $datos["direccion"]);
+		$stmt->bindParam(":cargo", $datos["cargo"]);
+		$stmt->bindParam(":usuario", $datos["usuario"]);
+		$stmt->bindParam(":password", $datos["password"]);
+		$stmt->bindParam(":password2", $datos["password2"]);
+		$stmt->bindParam(":estado", $datos["estado"]);
+
+		$stmt->prepare($query);
+
+		if ($stmt->execute()) 
+		{
 			return true;
 		}
 
