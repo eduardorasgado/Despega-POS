@@ -36,6 +36,3 @@ class Conexion
 		return "http://localhost/proyecto/";
 	}
 }
-
-$a = new Conexion();
-$a->conexionDatabase();
