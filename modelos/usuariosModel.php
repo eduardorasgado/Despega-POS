@@ -28,17 +28,17 @@ class UsuariosModel extends Conexion
 		$query = "INSERT INTO $tabla VALUES(null,:nombre,:apellidos,:cedula,:telefono,:correo,:direccion,:cargo,:usuario,:password,:password2,now(),:estado);";
 
 
-		$stmt->bindParam(":nombre", $datos["nombre"]);
-		$stmt->bindParam(":apellidos", $datos["apellidos"]);
-		$stmt->bindParam(":cedula", $datos["cedula"]);
-		$stmt->bindParam(":telefono", $datos["telefono"]);
-		$stmt->bindParam(":correo", $datos["correo"]);
-		$stmt->bindParam(":direccion", $datos["direccion"]);
-		$stmt->bindParam(":cargo", $datos["cargo"]);
-		$stmt->bindParam(":usuario", $datos["usuario"]);
-		$stmt->bindParam(":password", $datos["password"]);
-		$stmt->bindParam(":password2", $datos["password2"]);
-		$stmt->bindParam(":estado", $datos["estado"]);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_STR);
+		$stmt->bindParam(":cedula", $datos["cedula"], PDO::PARAM_STR);
+		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+		$stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
+		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":cargo", $datos["cargo"], PDO::PARAM_STR);
+		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+		$stmt->bindParam(":password2", $datos["password2"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 
 		$stmt->prepare($query);
 
@@ -58,18 +58,18 @@ class UsuariosModel extends Conexion
 		$query = "UPDATE $tabla SET (null,nombre= :nombre,apellidos= :apellidos,cedula= :cedula,telefono= :telefono,correo= :correo,direccion= :direccion,cargo= :cargo,usuario= :usuario,password= :password,password2= :password2,estado= :estado WHERE id_usuario = :id_usuario);";
 
 
-		$stmt->bindParam(":id_usuario", $datos["id_usuario"]);
-		$stmt->bindParam(":nombre", $datos["nombre"]);
-		$stmt->bindParam(":apellidos", $datos["apellidos"]);
-		$stmt->bindParam(":cedula", $datos["cedula"]);
-		$stmt->bindParam(":telefono", $datos["telefono"]);
-		$stmt->bindParam(":correo", $datos["correo"]);
-		$stmt->bindParam(":direccion", $datos["direccion"]);
-		$stmt->bindParam(":cargo", $datos["cargo"]);
-		$stmt->bindParam(":usuario", $datos["usuario"]);
-		$stmt->bindParam(":password", $datos["password"]);
-		$stmt->bindParam(":password2", $datos["password2"]);
-		$stmt->bindParam(":estado", $datos["estado"]);
+		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_STR);
+		$stmt->bindParam(":cedula", $datos["cedula"], PDO::PARAM_STR);
+		$stmt->bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
+		$stmt->bindParam(":correo", $datos["correo"], PDO::PARAM_STR);
+		$stmt->bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
+		$stmt->bindParam(":cargo", $datos["cargo"], PDO::PARAM_STR);
+		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+		$stmt->bindParam(":password2", $datos["password2"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 
 		$stmt->prepare($query);
 
@@ -79,5 +79,13 @@ class UsuariosModel extends Conexion
 		}
 
 		return false;
+	}
+
+	public function getUsuarioModel($dato, $tabla)
+	{
+		$stmt = Conexion::conexionDatabase();
+		Conexion::set_names();
+
+		$query = "SELECT * FROM $tabla WHERE id_usuario = :id_usuario";
 	}
 }

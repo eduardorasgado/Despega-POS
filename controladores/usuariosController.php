@@ -52,4 +52,9 @@ class UsuariosController
 			return $response;
 		}
 	}
+
+	public function getUsuarioController()
+	{
+		
+	}
 }
