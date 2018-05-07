@@ -22,7 +22,7 @@ class UsuariosController
 				"estado" => $_POST["estado"]
 			];
 
-			$response = usuariosModel::registrarUsuariosModel($datos,"usuarios");
+			$response = usuariosModel::registrarUsuarioModel($datos,"usuarios");
 
 			return $response;
 		}
@@ -47,7 +47,7 @@ class UsuariosController
 				"estado" => $_POST["estado"]
 			];
 
-			$response = usuariosModel::registrarUsuariosModel($datos,"usuarios");
+			$response = usuariosModel::registrarUsuarioModel($datos,"usuarios");
 
 			return $response;
 		}
@@ -55,6 +55,28 @@ class UsuariosController
 
 	public function getUsuarioController()
 	{
-		
+		if (isset($_POST["id_usuario"])) 
+		{
+			$datos = [
+				"id_usuario" => $_POST["id_usuario"],
+			];
+
+			$response = usuariosModel::getUsuarioModel($datos,"usuarios");
+
+			return $response;
+		}
+	}
+
+	public function editarEstadoController()
+	{
+		if (isset($_POST["id_usuario"])) {
+			$datos = [
+				"id_usuario" => $_POST["id_usuario"],
+			];
+
+			$response = usuariosModel::editarEstadoModel($datos,"usuarios");
+
+			return $response;
+		}
 	}
 }

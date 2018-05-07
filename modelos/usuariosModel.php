@@ -81,11 +81,30 @@ class UsuariosModel extends Conexion
 		return false;
 	}
 
-	public function getUsuarioModel($dato, $tabla)
+	public function getUsuarioModel($datos, $tabla)
 	{
 		$stmt = Conexion::conexionDatabase();
 		Conexion::set_names();
 
 		$query = "SELECT * FROM $tabla WHERE id_usuario = :id_usuario";
+
+		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
+
+		$stmt->prepare($query);
+
+		if ($stmt->execute()) 
+		{
+			return $stmt->fetch();
+		}
+
+		return false;
+	}
+
+	//EDITAR EL ESTADO DEL USUARIO, activa y desactiva
+	//el estado
+
+	public function editarEstadoModel($dato, $estado)
+	{
+
 	}
 }
