@@ -83,4 +83,28 @@ function listar()
 	}).DataTable();
 }
 
+function mostrar(id_usuario)
+{
+	$.post("../ajax/usuaruiAjax.php?operation=mostrar", {
+													id_usuario: id_usuario
+												}, function(data, status){
+													var data = JSON.parse(data);
+													$("#usuarioModal").modal("show");
+													$("#nombre").val(data.nombre);
+													$("#apellido").val(data.apellido);
+													$("#cedula").val(data.cedula);
+													$("#telefono").val(data.telefono);
+													$("#correo").val(data.correo);
+													$("#direccion").val(data.direccion);
+													$("#cargo").val(data.cargo);
+													$("#usuario").val(data.usuario);
+													$("#password1").val(data.password1);
+													$("#password2").val(data.password2);
+													$("#estado").val(data.estado);
+													$("#modal-title").val("Editar usuario");
+													$("#id_usuario").val(id_usuario);
+													$("#action").val("Edit");
+												});
+}
+
 init();

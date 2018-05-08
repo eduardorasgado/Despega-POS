@@ -208,7 +208,8 @@ switch ($_GET["operation"])
 				$output["direccion"] = $userToShow["direccion"];
 				$output["cargo"] = $userToShow["cargo"];
 				$output["usuario"] = $userToShow["usuario"];
-				$output["password"] = $userToShow["password"];
+				$output["password1"] = $userToShow["password1"];
+				$output["password2"] = $userToShow["password2"];
 				$output["estado"] = $userToShow["estado"];
 			}
 			//mostrando los datos al front en un json
