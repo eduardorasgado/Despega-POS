@@ -331,8 +331,11 @@ switch ($_GET["operation"])
 			//concatenacion guardada en sub_data en forma de boton para cambiar estado
 			$sub_data[] = '<button type="button" onClick="cambiarEstado('.$row["id_usuario"].','.$row["estado"].');" name="estado" id="'.$row["id_usuario"].'" class="'.$atributeForClass.'">'.$stateUser.'</button>';
 
-			//boton editar
-			$sub_data[] = '<button type="button" onClick="mostrar('.$row["id_usuario"].');" id="'.$row["id_usuario"].'" class="btn btn-warning btn update"><i class="glyphicon glyphicon-edit"></i> Editar</button>';
+			//boton EDITAR
+			$sub_data[] = '<button type="button" onClick="mostrar('.$row["id_usuario"].');" id="'.$row["id_usuario"].'" class="btn btn-warning btn-md update"><i class="glyphicon glyphicon-edit"></i> Editar</button>';
+
+			//boton ELIMINAR
+			$sub_data[] = '<button type="button" onClick="eliminar('.$row["id_usuario"].');" id="'.$row["id_usuario"].'" class="btn btn-danger btn-md"><i class="glyphicon glyphicon-edit"></i> Eliminar</button>';
 
 			//guardamos el array de usuario dentro del array para usuarios
 			$data[] = $sub_data;
