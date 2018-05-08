@@ -15,7 +15,10 @@
   <link rel="stylesheet" href="../public/bower_components/Ionicons/css/ionicons.min.css">
 
   <!-- DataTables -->
-  <link rel="stylesheet" href="../public/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!--link rel="stylesheet" href="../public/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"-->
+
+  <link rel="stylesheet" type="text/css" href="../vistas/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="../vistas/css/dataTables.bootstrap.min.css">
 
   <!-- Theme style -->
   <link rel="stylesheet" href="../public/dist/css/AdminLTE.min.css">
