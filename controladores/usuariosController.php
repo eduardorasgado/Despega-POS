@@ -88,26 +88,28 @@ class UsuariosController
 		}
 	}
 
-	public function editarEstadoController($id_user)
+	public function editarEstadoController($id_user, $estado)
 	{
 		if (isset($_POST["id_usuario"]))
 		{
 			$datos = [
 				"id_usuario" => $id_user,
+				"estado" => $estado
 			];
 
-			$estado = 0;
-
 			//esto se envia via ajax
-			if ($_POST["estado"] == "0") {
+			/*
+			if ($estado == "0")
+			{
 				$estado = 1;
 			}
 			else
 			{
 				$estado = 0;
 			}
+			*/
 
-			$response = usuariosModel::editarEstadoModel($datos, $estado,"usuarios");
+			$response = usuariosModel::editarEstadoModel($datos,"usuarios");
 
 			return $response;
 		}

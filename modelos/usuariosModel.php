@@ -110,7 +110,7 @@ class UsuariosModel extends Conexion
 	//EDITAR EL ESTADO DEL USUARIO, activa y desactiva
 	//el estado
 
-	public function editarEstadoModel($dato, $estado $tabla)
+	public function editarEstadoModel($dato, $tabla)
 	{
 		$stmt = Conexion::conexionDatabase();
 		Conexion::set_names();

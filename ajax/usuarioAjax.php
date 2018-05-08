@@ -29,7 +29,10 @@ $estado = isset($_POST["estado"]);
 //este es el que se envia al formulario
 
 
-switch ($_GET["operation"]) {
+switch ($_GET["operation"]) 
+{
+
+	#------------------------------------------------GUARDAR
 	case 'guardar':
 
 		//en caso de requerir valorar por usuario y cedula
@@ -66,7 +69,8 @@ switch ($_GET["operation"]) {
 		}
 
 		//Si success
-		if (isset($messages)) {
+		if (isset($messages))
+		{
 			//incorporamos bootstrap
 			?>
 
@@ -85,7 +89,8 @@ switch ($_GET["operation"]) {
 		}
 
 		//if errors
-		if (isset($messages)) {
+		if (isset($messages))
+		{
 			//incorporamos bootstrap
 			?>
 
@@ -106,6 +111,8 @@ switch ($_GET["operation"]) {
 
 		break;
 
+
+		#------------------------------------------------EDITAR
 	case 'editar':
 
 		$errors = null;
@@ -176,13 +183,15 @@ switch ($_GET["operation"]) {
 
 		break;
 
+	#------------------------------------------------MOSTRAR
 	case 'mostrar':
 		$errors = null;
 		
 		$userToShow = $usuario->getUsuarioController($id_usuario);
 		
 		//En caso de no haber usuario
-		if ($userToShow = false) {
+		if ($userToShow = false) 
+		{
 			$errors[] = "No hay tal usuario, no existe.";
 		}
 		//Si hay un array con usuarios y si es mayor a cero
@@ -227,7 +236,7 @@ switch ($_GET["operation"]) {
 		}
 
 		break;
-
+	#------------------------------------------------ACTIVAR
 	case 'activar':
 
 		$messages = null;
@@ -236,10 +245,10 @@ switch ($_GET["operation"]) {
 		
 		if (is_array($response))
 		{
-			$activatedUser = $usuario->editarEstadoController($response[0]["id_usuario"]);
+			$activatedUser = $usuario->editarEstadoController($response[0]["id_usuario"], $estado);
 			if ($activatedUser)
 			{
-				$messages[] = "El usuario ha sido activado.";
+				$messages[] = "El usuario ha cambiado de estado.";
 			}
 			
 		}
@@ -272,11 +281,11 @@ switch ($_GET["operation"]) {
 		break;
 
 	case 'desactivar':
-		
+
 		break;
 
 	case 'listar':
-		
+		echo "hola";
 		break;
 	
 	default:
