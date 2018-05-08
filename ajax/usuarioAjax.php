@@ -315,8 +315,22 @@ switch ($_GET["operation"])
 			$sub_data[] = date("d-m-Y", strotime($row["fecha_ingreso"]));
 
 			//estado
-			$est = "";
+			$stateUser = "";
+			$atributeForClass = "btn btn-success btn-md estado";
+			if ($row["estado"] == 0)
+			{
+				$stateUser = "Inactivo";
+				$atributeForClass = "btn btn-warning btn-md estado"; 
+			}
+			else
+			{
+				if ($row["estado"] == 1) {
+					$stateUser = "Activo";
+				}
+			}
+			$sub_data[] = $stateUser;
 
+			//guardamos el array de usuario dentro del array para usuarios
 			$data[] = $sub_data;
 		}
 
