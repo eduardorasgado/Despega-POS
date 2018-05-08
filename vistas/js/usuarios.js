@@ -179,4 +179,11 @@ function editar(e)
 	}
 }
 
+//Editar el estado del usuario: activo/inactivo
+function cambiarEstado(id_usuario, estado)
+{
+	//con esta funcion enviamos via ajax a usuarioAjax la info
+	
+}
+
 init();
