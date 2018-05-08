@@ -134,7 +134,8 @@ switch ($_GET["operation"]) {
 		}
 
 		//Si success
-		if (isset($messages)) {
+		if (isset($messages)) 
+		{
 			//incorporamos bootstrap
 			?>
 
@@ -153,7 +154,8 @@ switch ($_GET["operation"]) {
 		}
 
 		//if errors
-		if (isset($messages)) {
+		if (isset($errors)) 
+		{
 			//incorporamos bootstrap
 			?>
 
@@ -175,18 +177,101 @@ switch ($_GET["operation"]) {
 		break;
 
 	case 'mostrar':
-		$usuario->getUsuarioController($id_usuario);
-		if ($usuario = false) {
-			$errors[] = "No hay tal usuario";
+		$errors = null;
+		
+		$userToShow = $usuario->getUsuarioController($id_usuario);
+		
+		//En caso de no haber usuario
+		if ($userToShow = false) {
+			$errors[] = "No hay tal usuario, no existe.";
 		}
-		else if (is_Array($datos) == true && count($datos) > 0)
+		//Si hay un array con usuarios y si es mayor a cero
+		else if (is_Array($userToShow) == true && count($userToShow) > 0)
 		{
-			return $usuario;
+			$output = [];
+			//por cada usuario encontrado
+			foreach ($userToShow as $row) {
+				$output["nombre"] = $userToShow["nombre"];
+				$output["apellido"] = $userToShow["apellido"];
+				$output["cedula"] = $userToShow["cedula"];
+				$output["telefono"] = $userToShow["telefono"];
+				$output["correo"] = $userToShow["correo"];
+				$output["direccion"] = $userToShow["direccion"];
+				$output["cargo"] = $userToShow["cargo"];
+				$output["usuario"] = $userToShow["usuario"];
+				$output["password"] = $userToShow["password"];
+				$output["estado"] = $userToShow["estado"];
+			}
+			//mostrando los datos al front en un json
+			echo json_encode($output);
+		}
+		//if errors
+		if (isset($errors)) 
+		{
+			//incorporamos bootstrap
+			?>
+
+				<div class="alert alert-danger" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<strong>Operación denegada o fallida</strong>
+					<?php
+						foreach ($errors as $error)
+						{
+							echo $error;
+						}
+					?>
+				</div>
+			<?php
 		}
 
 		break;
 
-	case 'activarydesactivar':
+	case 'activar':
+
+		$messages = null;
+
+		$response = $usuario->getUsuarioController($id_usuario);
+		
+		if (is_array($response))
+		{
+			$activatedUser = $usuario->editarEstadoController($response[0]["id_usuario"]);
+			if ($activatedUser)
+			{
+				$messages[] = "El usuario ha sido activado.";
+			}
+			
+		}
+		//SI no es un array y es un false(fallo en ejecucion sql)
+		else
+		{
+			$messages[] = "Hubo un error: No existe usuario.";
+		}
+
+		//Si success
+		if (isset($messages)) 
+		{
+			//incorporamos bootstrap
+			?>
+
+				<div class="alert alert-success" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<strong>Operación exitosa</strong>
+					<?php
+						foreach ($messages as $message) {
+							echo $message;
+						}
+					?>
+				</div>
+			<?php
+		}
+
+		break;
+
+	case 'desactivar':
 		
 		break;
 

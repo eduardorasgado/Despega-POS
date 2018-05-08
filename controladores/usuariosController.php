@@ -88,12 +88,12 @@ class UsuariosController
 		}
 	}
 
-	public function editarEstadoController()
+	public function editarEstadoController($id_user)
 	{
 		if (isset($_POST["id_usuario"]))
 		{
 			$datos = [
-				"id_usuario" => $_POST["id_usuario"],
+				"id_usuario" => $id_user,
 			];
 
 			$estado = 0;

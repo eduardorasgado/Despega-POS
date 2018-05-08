@@ -101,7 +101,7 @@ class UsuariosModel extends Conexion
 
 		if ($stmt->execute()) 
 		{
-			return $stmt->fetch();
+			return $stmt->fetchAll();
 		}
 
 		return false;
