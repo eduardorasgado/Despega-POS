@@ -280,12 +280,46 @@ switch ($_GET["operation"])
 
 		break;
 
-	case 'desactivar':
-
-		break;
-
 	case 'listar':
-		echo "hola";
+		
+		$usersList = $usuarios->showUsuarios();
+		//declaramos dondeguardamos la data
+		$data = [];
+
+		//para cada usuario
+		foreach ($usersList as $row) {
+			//donde se va a guardar cada campo de un usuario
+			$sub_data = [];
+
+			$sub_data[] = $row["nombre"];
+			$sub_data[] = $row["apellidos"];
+			$sub_data[] = $row["cedula"];
+			$sub_data[] = $row["usuario"];
+			//cargo
+			$cargo = "";
+			if ($row["cargo"] == 1)
+			{
+				$cargo = "administrador";
+			}
+			else if ($row["cargo"] == 0)
+			{
+				$cargo = "empleado";
+			}
+
+			$sub_data[] = $cargo;
+
+			$sub_data[] = $row["telefono"];
+			$sub_data[] = $row["correo"];
+			$sub_data[] = $row["direccion"];
+			//estado
+			$sub_data[] = date("d-m-Y", strotime($row["fecha_ingreso"]));
+
+			//estado
+			$est = "";
+
+			$data[] = $sub_data;
+		}
+
 		break;
 	
 	default:

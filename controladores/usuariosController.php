@@ -9,7 +9,7 @@ class UsuariosController
 	{
 		$usuarios = usuariosModel::getUsuarios("usuarios");
 
-			return $usuarios;
+		return $usuarios;
 	}
 
 	public function registrarUsuarioController()
