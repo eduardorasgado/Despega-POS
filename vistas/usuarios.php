@@ -13,7 +13,7 @@
                   <div class="box">
                     <div class="box-header with-border">
                           <h1 class="box-title">
-                            <button class="btn btn-primary btn-lg" id="add_button" data-toggle="modal" data-target="#usuarioModal"><i class="fa fa-plus-plus" aria-hidden="true"></i> Nuevo Usuario</button></h1>
+                            <button class="btn btn-primary btn-lg" id="add_button" data-toggle="modal" data-target="#usuarioModal" onclick="limpiar()"><i class="fa fa-plus-plus" aria-hidden="true"></i> Nuevo Usuario</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -37,7 +37,9 @@
                            </tr>
                          </thead>
                          <tbody>
-                           
+                           <?php 
+
+                            ?>
                          </tbody>
                        </table>
                     </div>
@@ -55,3 +57,5 @@
 
   require_once("footer.php");
 ?>
+
+<script type="text/javascript" src="js/usuarios.js"></script>
