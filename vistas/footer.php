@@ -1,9 +1,9 @@
 
  <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2018 <a href="https://beemsites.com">Beemsites Software Signature</a>.</strong> Todos los derechos Reservados.
+    <strong>Copyright &copy; 2018 <a href="https://google.com">Volta Robotics Signature</a>.</strong> Todos los derechos Reservados.
   </footer>
 
   <!-- Control Sidebar -->
