@@ -183,7 +183,22 @@ function editar(e)
 function cambiarEstado(id_usuario, estado)
 {
 	//con esta funcion enviamos via ajax a usuarioAjax la info
-	
+	bootbox.confirm("Est'a seguro de cambiar estado?", function(result){
+		if (result)
+		{
+			$.ajax({
+				url: "../ajax/usuarioAjax.php?operation=activarydesactivar",
+				method: "POST",
+				//toma el valor del id y del estado
+				//el primero es el parametro a enviar, el segundo es el nombre asignado
+				data: {id_usuario:id_usuario, estado:estado},
+				success: function(data){
+					//si hay exito pasar a tablas recargando asincrono
+					$("#usuario_data").DataTable().ajax.reload();
+				}
+			});
+		}
+	});
 }
 
 init();
