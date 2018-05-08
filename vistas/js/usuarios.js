@@ -107,4 +107,11 @@ function mostrar(id_usuario)
 												});
 }
 
+//la funcion guardar
+function guardar(e)
+{ //e es el parametro del evento
+	e.preventDefault();
+	
+}
+
 init();
