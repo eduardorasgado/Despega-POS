@@ -4,6 +4,14 @@ require_once("../modelos/usuariosModel.php");
 
 class UsuariosController
 {
+
+	public function showUsuarios()
+	{
+		$usuarios = usuariosModel::getUsuarios("usuarios");
+
+			return $usuarios;
+	}
+
 	public function registrarUsuarioController()
 	{
 		if (isset($_POST["nombre"])) 
@@ -102,5 +110,45 @@ class UsuariosController
 		$response = usuariosModel::editarEstadoModel($datos,"usuarios");
 
 		return $response;
+	}
+
+	public function validarUsuarioInputController($datos)
+	{
+		
+		$response = usuariosModel::editarEstadoModel($datos,"usuarios");
+
+
+		//si nombre no existe, se guarda usuario
+		if (!$response)
+		{
+			//Si las passwords coinciden
+			if ($password1 == $password2) 
+			{
+				//Si esta vacio id_usuario
+				if (empty($_POST["id_usuario"])) 
+				{
+					return true;
+				}
+				else
+				{
+					$errors[] = "El usuario existe";
+					return $errors;
+				}
+				
+			}
+			else
+			{
+				//Si los passwords no coinciden
+				$errors[] = "Las contraseñas no coinciden";
+				return $errors;
+
+			}
+
+		}
+		//Si el nombre existe
+		else
+		{
+			return false;
+		}
 	}
 }

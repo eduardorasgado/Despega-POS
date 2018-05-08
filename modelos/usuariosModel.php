@@ -15,13 +15,16 @@ class UsuariosModel extends Conexion
 
 		$stmt->prepare($query);
 
-		$stmt->execute();
-
-		$resultado = $stmt->fetchAll();
-
-		$stmt = null;
-
-		return $resultado;
+		if ($stmt->execute()) {
+			$resultado = $stmt->fetchAll();
+			$stmt = null;
+			return $resultado;
+		}
+		else
+		{
+			return false;
+		}
+		
 	}
 
 	public function registrarUsuarioModel($datos, $tabla)
@@ -144,6 +147,27 @@ class UsuariosModel extends Conexion
 		if ($stmt->execute()) 
 		{
 			$resultado = $stmt->fetchAll();
+			$stmt = null;
+			return $resultado;
+		}
+
+		return false;
+	}
+
+	public function validarUsuarioInputModel($datos, $tabla)
+	{
+		$stmt = Conexion::conexionDatabase();
+		Conexion::set_names();
+
+		$query = "SELECT * FROM $tabla WHERE usuario = :usuario";
+
+		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+
+		$stmt->prepare($query);
+
+		if ($stmt->execute()) 
+		{
+			$resultado = $stmt->fetch();
 			$stmt = null;
 			return $resultado;
 		}
