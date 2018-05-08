@@ -85,7 +85,7 @@ function listar()
 
 function mostrar(id_usuario)
 {
-	$.post("../ajax/usuaruiAjax.php?operation=mostrar", {
+	$.post("../ajax/usuarioAjax.php?operation=mostrar", {
 													id_usuario: id_usuario
 												}, function(data, status){
 													var data = JSON.parse(data);
@@ -119,7 +119,59 @@ function guardar(e)
 
 	if (password1 == password2) 
 	{
+		$.ajax({
+			url: "../ajax/usuarioAjax.php?operation=guardar",
+			type: "POST",
+			data: formData,
+			contentType: false,
+			processData: false,
+			success: function(datos){
+				$("#usuario_form")[0].reset();
+				$("#usuarioModal").modal("hide");
 
+				$("resultados_ajax").html(datos);
+				$("#usuario_data").DataTable().ajax.reload();
+
+				//Despues de hacer un registro se limpian lso campos
+				limpiar();
+			}
+		});
+	}
+	else
+	{
+		bootbox.alert("No coinciden las contraseñas.")
+	}
+}
+
+//la funcion guardar
+function editar(e)
+{ //e es el parametro del evento
+	e.preventDefault();
+	var formData = new FormData($("#usuario_form")[0]);  //viene de ajax de jquery
+
+	//vlidacion de passwords
+	var password1 = $("#password1").val();
+	var password2 = $("#password2").val();
+
+	if (password1 == password2) 
+	{
+		$.ajax({
+			url: "../ajax/usuarioAjax.php?operation=editar",
+			type: "POST",
+			data: formData,
+			contentType: false,
+			processData: false,
+			success: function(datos){
+				$("#usuario_form")[0].reset();
+				$("#usuarioModal").modal("hide");
+
+				$("resultados_ajax").html(datos);
+				$("#usuario_data").DataTable().ajax.reload();
+
+				//Despues de hacer un registro se limpian lso campos
+				limpiar();
+			}
+		});
 	}
 	else
 	{
