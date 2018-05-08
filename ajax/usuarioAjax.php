@@ -30,15 +30,18 @@ $estado = isset($_POST["estado"]);
 
 
 switch ($_GET["operation"]) {
-	case 'guardaryeditar':
+	case 'guardar':
 
 		//en caso de requerir valorar por usuario y cedula
 		/*
 		$datos = $usuario->getCedulaCorreoUsuarioController($_POST["cedula"], $_POST["email"]);
 		*/
-		
+		$messages = null;
+		$errors = null;
+
 		$datos = [
-			"usuario" => $usuario,
+			"nombre" => $nombre,
+			"apellido" => $apellido,
 			"password1" => $password1,
 			"password2" => $password2,
 		];
@@ -62,7 +65,71 @@ switch ($_GET["operation"]) {
 			}
 		}
 
+		//Si success
+		if (isset($messages)) {
+			//incorporamos bootstrap
+			?>
 
+				<div class="alert alert-success" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<strong>Operación exitosa</strong>
+					<?php
+						foreach ($messages as $message) {
+							echo $message;
+						}
+					?>
+				</div>
+			<?php
+		}
+
+		//if errors
+		if (isset($messages)) {
+			//incorporamos bootstrap
+			?>
+
+				<div class="alert alert-danger" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<strong>Operación denegada o fallida</strong>
+					<?php
+						foreach ($errors as $error)
+						{
+							echo $error;
+						}
+					?>
+				</div>
+			<?php
+		}
+
+
+		break;
+
+	case 'editar':
+
+		$datos = [
+			"nombre" => $nombre,
+			"apellido" => $apellido,
+			"password1" => $password1,
+			"password2" => $password2,
+		];
+		
+		$response = $usuario->editarUsuarioController($datos);
+
+		if ($response == true)
+		{
+			$messages[] = "Se ha editado con éxito";
+		}
+		else if (is_array($response))
+		{
+			$errors = $response;
+		}
+		else if ($response == false) 
+		{
+			$messages[] = "Ha ocurrido un error";
+		}
 		break;
 
 	case 'mostrar':

@@ -159,9 +159,10 @@ class UsuariosModel extends Conexion
 		$stmt = Conexion::conexionDatabase();
 		Conexion::set_names();
 
-		$query = "SELECT * FROM $tabla WHERE usuario = :usuario";
+		$query = "SELECT * FROM $tabla WHERE nombre = :nombre AND apellido = :apellido";
 
-		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
 
 		$stmt->prepare($query);
 
