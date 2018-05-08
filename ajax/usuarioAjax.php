@@ -104,10 +104,12 @@ switch ($_GET["operation"]) {
 			<?php
 		}
 
-
 		break;
 
 	case 'editar':
+
+		$errors = null;
+		$messages = null;
 
 		$datos = [
 			"nombre" => $nombre,
@@ -130,6 +132,46 @@ switch ($_GET["operation"]) {
 		{
 			$messages[] = "Ha ocurrido un error";
 		}
+
+		//Si success
+		if (isset($messages)) {
+			//incorporamos bootstrap
+			?>
+
+				<div class="alert alert-success" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<strong>Operación exitosa</strong>
+					<?php
+						foreach ($messages as $message) {
+							echo $message;
+						}
+					?>
+				</div>
+			<?php
+		}
+
+		//if errors
+		if (isset($messages)) {
+			//incorporamos bootstrap
+			?>
+
+				<div class="alert alert-danger" role="alert">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					<strong>Operación denegada o fallida</strong>
+					<?php
+						foreach ($errors as $error)
+						{
+							echo $error;
+						}
+					?>
+				</div>
+			<?php
+		}
+		
 		break;
 
 	case 'mostrar':
