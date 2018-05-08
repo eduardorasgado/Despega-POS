@@ -74,12 +74,12 @@ class UsuariosController
 		}
 	}
 
-	public function getUsuarioController()
+	public function getUsuarioController($id_usuario)
 	{
 		if (isset($_POST["id_usuario"])) 
 		{
 			$datos = [
-				"id_usuario" => $_POST["id_usuario"],
+				"id_usuario" => $id_usuario,
 			];
 
 			$response = usuariosModel::getUsuarioModel($datos,"usuarios");

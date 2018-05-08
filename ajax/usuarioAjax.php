@@ -171,11 +171,19 @@ switch ($_GET["operation"]) {
 				</div>
 			<?php
 		}
-		
+
 		break;
 
 	case 'mostrar':
-		
+		$usuario->getUsuarioController($id_usuario);
+		if ($usuario = false) {
+			$errors[] = "No hay tal usuario";
+		}
+		else if (is_Array($datos) == true && count($datos) > 0)
+		{
+			return $usuario;
+		}
+
 		break;
 
 	case 'activarydesactivar':
