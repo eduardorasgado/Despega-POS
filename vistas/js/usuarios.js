@@ -3,7 +3,20 @@ var table;
 //funcion que siempre se va a ejecutar desde el inicio
 function init()
 {
+	//mostrar todos los registros desde el inicio
+	listar();
+	//Cuando se da click al boton submit entonces se ejecuta la funcion guardar
+	$("usuario_form").on("submit",function(e){
+		//si el user es nuevo
+		guardar(e);
+		//Si el user ya existe
+		editar(e);
+	});
 
+	//cambiar el tituo de la ventana modal cuando se da click al boton
+	$("#add_button").click(function(){
+		$(".modal-title").text("Agregar Usuario");
+	});
 }
 
 //funcion para limpiar los campos del formulario
@@ -101,7 +114,7 @@ function mostrar(id_usuario)
 													$("#password1").val(data.password1);
 													$("#password2").val(data.password2);
 													$("#estado").val(data.estado);
-													$("#modal-title").val("Editar usuario");
+													$(".modal-title").val("Editar usuario");
 													$("#id_usuario").val(id_usuario);
 													$("#action").val("Edit");
 												});
