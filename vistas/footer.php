@@ -224,6 +224,7 @@
 <script type="text/javascript" src="../public/DataTables/Buttons-1.5.1/js/buttons.html5.min.js"></script>
 <script type="text/javascript" src="../public/DataTables/Buttons-1.5.1/js/buttons.print.min.js"></script>
 <script type="text/javascript" src="../public/DataTables/Responsive-2.2.1/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript" src="../public/DataTables/Buttons-1.5.1/js/buttons.colVis.min.js"></script>
 
 <!-- Morris.js charts -->
 <script src="../public/bower_components/raphael/raphael.min.js"></script>
