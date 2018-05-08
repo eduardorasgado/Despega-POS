@@ -238,7 +238,7 @@ switch ($_GET["operation"])
 
 		break;
 	#------------------------------------------------ACTIVAR
-	case 'activar':
+	case 'activarydesactivar':
 
 		$messages = null;
 

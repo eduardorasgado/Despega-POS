@@ -111,7 +111,20 @@ function mostrar(id_usuario)
 function guardar(e)
 { //e es el parametro del evento
 	e.preventDefault();
-	
+	var formData = new FormData($("#usuario_form")[0]);  //viene de ajax de jquery
+
+	//vlidacion de passwords
+	var password1 = $("#password1").val();
+	var password2 = $("#password2").val();
+
+	if (password1 == password2) 
+	{
+
+	}
+	else
+	{
+		bootbox.alert("No coinciden las contraseñas.")
+	}
 }
 
 init();
