@@ -69,14 +69,38 @@ class UsuariosController
 
 	public function editarEstadoController()
 	{
-		if (isset($_POST["id_usuario"])) {
+		if (isset($_POST["id_usuario"]))
+		{
 			$datos = [
 				"id_usuario" => $_POST["id_usuario"],
 			];
 
-			$response = usuariosModel::editarEstadoModel($datos,"usuarios");
+			$estado = 0;
+
+			//esto se envia via ajax
+			if ($_POST["estado"] == "0") {
+				$estado = 1;
+			}
+			else
+			{
+				$estado = 0;
+			}
+
+			$response = usuariosModel::editarEstadoModel($datos, $estado,"usuarios");
 
 			return $response;
 		}
+	}
+
+	public function getCedulaCorreoUsuarioController($cedula, $email)
+	{
+		$datos = [
+			"cedula" => $cedula,
+			"email" => $email
+		];
+
+		$response = usuariosModel::editarEstadoModel($datos,"usuarios");
+
+		return $response;
 	}
 }
