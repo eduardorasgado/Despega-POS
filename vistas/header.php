@@ -17,8 +17,9 @@
   <!-- DataTables -->
   <!--link rel="stylesheet" href="../public/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"-->
 
-  <link rel="stylesheet" type="text/css" href="../vistas/css/jquery.dataTables.min.css">
-  <link rel="stylesheet" type="text/css" href="../vistas/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../public/DataTables/DataTables-1.10.16/css/jquery.dataTables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../public/DataTables/Buttons-1.5.1/css/buttons.dataTables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../public/DataTables/Responsive-2.2.1/css/responsive.dataTables.min.css"/>
 
   <!-- Theme style -->
   <link rel="stylesheet" href="../public/dist/css/AdminLTE.min.css">

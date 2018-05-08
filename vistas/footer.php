@@ -214,7 +214,10 @@
 <script src="../public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- DataTables -->
-<script src="../public/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<!--script src="../public/bower_components/datatables.net/js/jquery.dataTables.min.js"></script-->
+<script type="text/javascript" src="../public/DataTables/DataTables-1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../public/DataTables/Buttons-1.5.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="../public/DataTables/Responsive-2.2.1/js/dataTables.responsive.min.js"></script>
 
 <!-- Morris.js charts -->
 <script src="../public/bower_components/raphael/raphael.min.js"></script>
