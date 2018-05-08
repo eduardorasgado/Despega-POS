@@ -47,7 +47,7 @@ class UsuariosController
 			if ($password1 == $password2) 
 			{
 				$datos = [
-					"id_usuario" => $_POST["id_usuario"]
+					"id_usuario" => $_POST["id_usuario"],
 					"nombre" => $_POST["nombre"],
 					"apellidos" => $_POST["apellidos"],
 					"cedula" => $_POST["cedula"],

@@ -5,7 +5,7 @@ require_once("../controladores/usuariosController.php");
 require_once("../modelos/usuariosModel.php");
 
 
-$usuarios = new UsuarioController();
+$usuarios = new UsuariosController();
 
 /*
 Declaramos las variables de los valores que se enviaran por el formulario
@@ -59,7 +59,7 @@ switch ($_GET["operation"])
 		else
 		{
 			if ($userRegistered == true) {
-				$usuario->registrarUsuarioController()
+				$usuario->registrarUsuarioController();
 				$messages[] = "El usuario se registro correctamente";
 			}
 			else if ($userRegistered == false) {

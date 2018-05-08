@@ -2,7 +2,6 @@
 
 class Conexion
 {
-	protected $dbh;
 
 	public function conexionDatabase()
 	{
@@ -13,7 +12,7 @@ class Conexion
 		
 		try 
 		{
-			$conectar = $this->dbh = new PDO("mysql:".$host.$dbname, $username, $pass);
+			$conectar = new PDO("mysql:".$host.$dbname, $username, $pass);
 			return $conectar;
 
 		} 
@@ -25,14 +24,15 @@ class Conexion
 
 		
 	}
-
+/*
 	public function set_names()
 	{
-		return $this->dbh->query("SET NAMES 'utf8'");
+		//return $this->dbh->query("SET NAMES 'utf8'");
+		return true;
 	}
-
+*/
 	public function ruta()
 	{
-		return "http://localhost/proyecto/";
+		return "http://localhost/Despega-POS/";
 	}
 }

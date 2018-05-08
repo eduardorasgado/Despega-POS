@@ -8,14 +8,13 @@ class UsuariosModel extends Conexion
 	//LISTANDO USUARIOS
 	public function getUsuarios($tabla)
 	{
-		$stmt = Conexion::conexionDatabase();
-		Conexion::set_names();
+		$query = "SELECT * FROM $tabla";
+
+		$stmt = Conexion::conexionDatabase()->prepare($query);
+		//Conexion::set_names();
 		
-		$query = "SELECT * FROM usuarios";
-
-		$stmt->prepare($query);
-
-		if ($stmt->execute()) {
+		if ($stmt->execute()) 
+		{
 			$resultado = $stmt->fetchAll();
 			$stmt = null;
 			return $resultado;
@@ -29,11 +28,11 @@ class UsuariosModel extends Conexion
 
 	public function registrarUsuarioModel($datos, $tabla)
 	{
-		$stmt = Conexion::conexionDatabase();
-		Conexion::set_names();
 
 		$query = "INSERT INTO $tabla VALUES(null,:nombre,:apellidos,:cedula,:telefono,:correo,:direccion,:cargo,:usuario,:password,:password2,now(),:estado);";
 
+		$stmt = Conexion::conexionDatabase()->prepare($query);
+		//Conexion::set_names();
 
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_STR);
@@ -46,8 +45,6 @@ class UsuariosModel extends Conexion
 		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":password2", $datos["password2"], PDO::PARAM_STR);
 		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
-
-		$stmt->prepare($query);
 
 		if ($stmt->execute()) 
 		{
@@ -59,11 +56,10 @@ class UsuariosModel extends Conexion
 
 	public function editarUsuarioModel($datos, $tabla)
 	{
-		$stmt = Conexion::conexionDatabase();
-		Conexion::set_names();
-
 		$query = "UPDATE $tabla SET nombre= :nombre,apellidos= :apellidos,cedula= :cedula,telefono= :telefono,correo= :correo,direccion= :direccion,cargo= :cargo,usuario= :usuario,password= :password,password2= :password2,estado= :estado WHERE id_usuario = :id_usuario";
 
+		$stmt = Conexion::conexionDatabase()->prepare($query);
+		//Conexion::set_names();
 
 		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
@@ -78,8 +74,6 @@ class UsuariosModel extends Conexion
 		$stmt->bindParam(":password2", $datos["password2"], PDO::PARAM_STR);
 		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 
-		$stmt->prepare($query);
-
 		if ($stmt->execute()) 
 		{
 			return true;
@@ -90,14 +84,12 @@ class UsuariosModel extends Conexion
 
 	public function getUsuarioModel($datos, $tabla)
 	{
-		$stmt = Conexion::conexionDatabase();
-		Conexion::set_names();
-
 		$query = "SELECT * FROM $tabla WHERE id_usuario = :id_usuario";
 
-		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
+		$stmt = Conexion::conexionDatabase()->prepare($query);
+		//Conexion::set_names();
 
-		$stmt->prepare($query);
+		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
 
 		if ($stmt->execute()) 
 		{
@@ -112,16 +104,13 @@ class UsuariosModel extends Conexion
 
 	public function editarEstadoModel($dato, $tabla)
 	{
-		$stmt = Conexion::conexionDatabase();
-		Conexion::set_names();
-
 		$query = "UPDATE $tabla SET (estado= :estado WHERE id_usuario = :id_usuario);";
 
+		$stmt = Conexion::conexionDatabase()->prepare($query);
+		//Conexion::set_names();
 
 		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
 		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
-
-		$stmt->prepare($query);
 
 		if ($stmt->execute()) 
 		{
@@ -134,15 +123,13 @@ class UsuariosModel extends Conexion
 	//validar correo y cedula de usuario
 	public function getCedulaCorreoUsuarioModel($datos, $tabla)
 	{
-		$stmt = Conexion::conexionDatabase();
-		Conexion::set_names();
-
 		$query = "SELECT * FROM $tabla WHERE cedula = :cedula OR correo = :correo";
+
+		$stmt = Conexion::conexionDatabase()->prepare($query);
+		//Conexion::set_names();
 
 		$stmt->bindParam(":cedula", $datos["cedula"], PDO::PARAM_STR);
 		$stmt->bindParam(":correo", $datos["email"], PDO::PARAM_STR);
-
-		$stmt->prepare($query);
 
 		if ($stmt->execute()) 
 		{
@@ -156,15 +143,13 @@ class UsuariosModel extends Conexion
 
 	public function validarUsuarioInputModel($datos, $tabla)
 	{
-		$stmt = Conexion::conexionDatabase();
-		Conexion::set_names();
-
 		$query = "SELECT * FROM $tabla WHERE nombre = :nombre AND apellido = :apellido";
+
+		$stmt = Conexion::conexionDatabase()->prepare($query);
+		//Conexion::set_names();
 
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
-
-		$stmt->prepare($query);
 
 		if ($stmt->execute()) 
 		{
