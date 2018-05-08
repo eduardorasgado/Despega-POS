@@ -287,7 +287,8 @@ switch ($_GET["operation"])
 		$data = [];
 
 		//para cada usuario
-		foreach ($usersList as $row) {
+		foreach ($usersList as $row)
+		{
 			//donde se va a guardar cada campo de un usuario
 			$sub_data = [];
 
@@ -341,10 +342,20 @@ switch ($_GET["operation"])
 			$data[] = $sub_data;
 		}
 
+		$results = array(
+			"sEcho" => 1, //informacion para el datatable
+			"iTotalRecors" => count($data), //enviamos el total de registros
+			"iTotalDisplayRecords" => count($data), //enviamos el total registros
+			"aaData" => $data
+		);
+
+		//devolver un json de lo anterior
+		echo json_encode($results);
+
 		break;
 	
 	default:
-		# code...
+		echo " ";
 		break;
 }
 
