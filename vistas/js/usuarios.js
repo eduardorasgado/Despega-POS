@@ -196,7 +196,7 @@ function editar(e)
 function cambiarEstado(id_usuario, estado)
 {
 	//con esta funcion enviamos via ajax a usuarioAjax la info
-	bootbox.confirm("Est'a seguro de cambiar estado?", function(result){
+	bootbox.confirm("Está seguro de cambiar estado?", function(result){
 		if (result)
 		{
 			$.ajax({
