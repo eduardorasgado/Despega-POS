@@ -23,7 +23,7 @@
                        <table id="usuario_data" class="table table-bordered table-striped">
                          <thead>
                            <tr>
-                             <th>Nombre</th>
+                             <th>Nombres</th>
                              <th>Apellido</th>
                              <th>Cédula</th>
                              <th>Teléfono</th>
@@ -31,6 +31,7 @@
                              <th>Dirección</th>
                              <th>Cargo</th>
                              <th>Usuario</th>
+                             <th>Fecha Ingreso</th>
                              <th>Estado</th>
                              <th width="10%">Editar</th>
                              <th width="10%">Eliminar</th>
@@ -50,7 +51,7 @@
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
-  
+
 
 <?php
 

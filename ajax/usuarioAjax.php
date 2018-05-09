@@ -14,7 +14,7 @@ recibiendo ...
 */
 
 $id_usuario = isset($_POST["id_usuario"]);
-$nombre = isset($_POST["nombre"]);
+$nombres = isset($_POST["nombres"]);
 $apellido = isset($_POST["apellido"]);
 $cedula = isset($_POST["cedula"]);
 $telefono = isset($_POST["telefono"]);
@@ -43,7 +43,7 @@ switch ($_GET["operation"])
 		$errors = null;
 
 		$datos = [
-			"nombre" => $nombre,
+			"nombres" => $nombres,
 			"apellido" => $apellido,
 			"password1" => $password1,
 			"password2" => $password2,
@@ -119,7 +119,7 @@ switch ($_GET["operation"])
 		$messages = null;
 
 		$datos = [
-			"nombre" => $nombre,
+			"nombres" => $nombres,
 			"apellido" => $apellido,
 			"password1" => $password1,
 			"password2" => $password2,
@@ -200,7 +200,7 @@ switch ($_GET["operation"])
 			$output = [];
 			//por cada usuario encontrado
 			foreach ($userToShow as $row) {
-				$output["nombre"] = $userToShow["nombre"];
+				$output["nombres"] = $userToShow["nombres"];
 				$output["apellido"] = $userToShow["apellido"];
 				$output["cedula"] = $userToShow["cedula"];
 				$output["telefono"] = $userToShow["telefono"];
@@ -293,10 +293,12 @@ switch ($_GET["operation"])
 			//donde se va a guardar cada campo de un usuario
 			$sub_data = [];
 
-			$sub_data[] = $row["nombre"];
+			$sub_data[] = $row["nombres"];
 			$sub_data[] = $row["apellidos"];
 			$sub_data[] = $row["cedula"];
-			$sub_data[] = $row["usuario"];
+			$sub_data[] = $row["telefono"];
+			$sub_data[] = $row["correo"];
+			$sub_data[] = $row["direccion"];	
 			//cargo
 			$cargo = "";
 			if ($row["cargo"] == 1)
@@ -309,12 +311,9 @@ switch ($_GET["operation"])
 			}
 
 			$sub_data[] = $cargo;
+			$sub_data[] = $row["usuario"];	
 
-			$sub_data[] = $row["telefono"];
-			$sub_data[] = $row["correo"];
-			$sub_data[] = $row["direccion"];
-			//estado
-			$sub_data[] = date("d-m-Y", strotime($row["fecha_ingreso"]));
+			$sub_data[] = date("d-m-Y", strtotime($row["fecha_ingreso"]));
 
 			//estado
 			$stateUser = "";

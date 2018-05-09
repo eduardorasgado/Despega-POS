@@ -22,7 +22,7 @@ function init()
 //funcion para limpiar los campos del formulario
 function limpiarCampos()
 {
-	var elements = ["nombre", 
+	var elements = ["nombres", 
 				"apellido", 
 				"cedula", 
 				"usuario", 
@@ -103,7 +103,7 @@ function mostrar(id_usuario)
 												}, function(data, status){
 													var data = JSON.parse(data);
 													$("#usuarioModal").modal("show");
-													$("#nombre").val(data.nombre);
+													$("#nombres").val(data.nombres);
 													$("#apellido").val(data.apellido);
 													$("#cedula").val(data.cedula);
 													$("#telefono").val(data.telefono);

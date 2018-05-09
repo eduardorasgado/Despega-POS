@@ -8,7 +8,7 @@ class UsuariosController
 	public function showUsuarios()
 	{
 		$usuarios = usuariosModel::getUsuarios("usuarios");
-
+		
 		return $usuarios;
 	}
 
@@ -17,7 +17,7 @@ class UsuariosController
 		if (isset($_POST["nombre"])) 
 		{
 			$datos = [
-				"nombre" => $_POST["nombre"],
+				"nombres" => $_POST["nombres"],
 				"apellidos" => $_POST["apellidos"],
 				"cedula" => $_POST["cedula"],
 				"telefono" => $_POST["telefono"],
@@ -41,14 +41,14 @@ class UsuariosController
 
 
 
-		if (isset($_POST["nombre"])) 
+		if (isset($_POST["nombres"])) 
 		{
 			$response = false;
 			if ($password1 == $password2) 
 			{
 				$datos = [
 					"id_usuario" => $_POST["id_usuario"],
-					"nombre" => $_POST["nombre"],
+					"nombres" => $_POST["nombres"],
 					"apellidos" => $_POST["apellidos"],
 					"cedula" => $_POST["cedula"],
 					"telefono" => $_POST["telefono"],
