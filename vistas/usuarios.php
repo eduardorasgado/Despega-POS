@@ -82,7 +82,7 @@
           <input id="correo" type="email" name="correo" class="form-control" placeholder="Correo Electrónico válido" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
           
           <label for="direccion">Dirección</label>
-          <input id="direccion" type="text" name="direccion" class="form-control" placeholder="Número interno/externo, colonia o delegación, ciudad o municipio." maxlength="110" pattern="^[a-zA-Z_áéíóú\s]{0,110}" title="Por favor no ingresar signos extraños o ajenos a letras del abecedario">
+          <input id="direccion" type="text" name="direccion" class="form-control" placeholder="Número interno/externo, colonia o delegación, ciudad o municipio." maxlength="110" pattern="^[a-zA-Z0-9_áéíóú , . # \s]{0,110}" title="Por favor no ingresar signos extraños o ajenos a letras del abecedario">
           
           <label for="cargo">Cargo</label>
           <select class="form-control" id="cargo" name="cargo" required>
@@ -110,7 +110,12 @@
         </div>
        
         <div class="modal-footer">
-          <input type="submit" value="Registrar" class="modal-title">
+          <input type="hidden" name="id_usuario" id="id_usuario">
+
+          <button type="button" onclick="" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Cerrar</button>
+
+          <button type="submit" name="action" id="btnGuardar" class="btn btn-success pull-right" value="Add"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+
         </div>
       
       </div>
