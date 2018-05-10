@@ -73,16 +73,16 @@
           <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Primero y segundo apellido" pattern="^[a-zA-Z_áéíóú\s]{0,100}" title="Por favor no ingresar signos extraños o ajenos a letras del abecedario" minlength="4" maxlength="100" required>
           
           <label for="cedula">Cédula</label>
-          <input name="cedula" id="cedula" class="form-control" placeholder="Cédula/ no es requerida" required pattern="[0-9]{0,15}" itle="Por favor ingresa una cédula válida">
+          <input name="cedula" id="cedula" class="form-control" placeholder="Cédula/ no es requerida" pattern="[0-9]{0,15}" title="Por favor ingresa una cédula válida">
           
           <label for="telefono">Telefono</label>
-          <input id="telefono" type="text" name="telefono" class="form-control" placeholder="Teléfono" pattern="[0-9]{0,20}" title="Por favor ingresar valores numéricos" minlength="10" maxlength="80">
+          <input id="telefono" type="text" name="telefono" class="form-control" placeholder="Teléfono celular o de casa" pattern="[0-9 ]{0,20}" title="Por favor ingresar valores numéricos" minlength="10" maxlength="80">
           
           <label for="correo">Correo</label>
           <input id="correo" type="email" name="correo" class="form-control" placeholder="Correo Electrónico válido" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
           
           <label for="direccion">Dirección</label>
-          <input id="direccion" type="text" name="direccion" class="form-control" placeholder="Número interno/externo, colonia o delegación, ciudad o municipio." maxlength="110">
+          <input id="direccion" type="text" name="direccion" class="form-control" placeholder="Número interno/externo, colonia o delegación, ciudad o municipio." maxlength="110" pattern="^[a-zA-Z_áéíóú\s]{0,110}" title="Por favor no ingresar signos extraños o ajenos a letras del abecedario">
           
           <label for="cargo">Cargo</label>
           <select class="form-control" id="cargo" name="cargo" required>
@@ -92,7 +92,7 @@
           </select><br>
 
           <label for="usuario">Usuario</label>
-          <input id="usuario" type="text" name="usuario" class="form-control" placeholder="Nombre en el sistema" minlength="3" maxlength="25" required>
+          <input id="usuario" type="text" name="usuario" class="form-control" placeholder="Nombre en el sistema" pattern="^[a-zA-Z_áéíóú\s]{0,80}" minlength="3" maxlength="25" title="Por favor no ingresar signos extraños o ajenos a letras del abecedario" required>
           
           <label for="password">Contraseña</label>
           <input id="password" type="password" name="password" class="form-control" required>
@@ -101,7 +101,12 @@
           <input id="password2" type="password" name="password2" class="form-control" required>
           
           <label for="estado">Estado</label>
-          <input id="estado" type="estado" name="estado" class="form-control" required maxlength="25" placeholder="Activo/inactivo">
+          <select class="form-control" id="estado" name="estado" required>
+            <option value="">-----Selecciona Estado------</option>
+            <option value="1">Activo</option>
+            <option value="0">Inactivo</option>
+          </select>
+
         </div>
        
         <div class="modal-footer">
