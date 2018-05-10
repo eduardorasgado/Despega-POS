@@ -67,41 +67,41 @@
         <div class="modal-body">
           
           <label>Nombres</label>
-          <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombre o nombres" required pattern="[a-zA-Z]{0,20}">
+          <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombre o nombres" required pattern="[a-zA-Z]{0,20}" title="Por favor no ingresar signos extraños o ajenos a letras del abecedario" minlength="3" maxlength="80">
           
           <label>Apellidos</label>
-          <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Primero y segundo apellido">
+          <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Primero y segundo apellido" pattern="[a-zA-Z]{0,20}" title="Por favor no ingresar signos extraños o ajenos a letras del abecedario" minlength="4" maxlength="100" required>
           
           <label for="cedula">Cédula</label>
-          <input name="cedula" id="cedula" class="form-control" placeholder="Cédula/ no es requerida" required pattern="[0-9]{0,15}">
+          <input name="cedula" id="cedula" class="form-control" placeholder="Cédula/ no es requerida" required pattern="[0-9]{0,15}" itle="Por favor ingresa una cédula válida">
           
           <label>Telefono</label>
-          <input id="telefono" type="text" name="telefono" class="form-control" placeholder="Teléfono">
+          <input id="telefono" type="text" name="telefono" class="form-control" placeholder="Teléfono" pattern="[0-9]{0,20}" title="Por favor ingresar valores numéricos" minlength="10" maxlength="80">
           
           <label>Correo</label>
-          <input id="correo" type="text" name="correo" class="form-control" placeholder="Correo Electrónico válido">
+          <input id="correo" type="email" name="correo" class="form-control" placeholder="Correo Electrónico válido" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
           
           <label>Dirección</label>
-          <input id="direccion" type="text" name="direccion" class="form-control">
+          <input id="direccion" type="text" name="direccion" class="form-control" placeholder="Número interno/externo, colonia o delegación, ciudad o municipio." maxlength="110">
           
           <label>Cargo</label>
-          <input id="cargo" type="text" name="cargo" class="form-control">
+          <input id="cargo" type="text" name="cargo" class="form-control" placeholder="administrador/empleado(a)" maxlength="50" required>
           
           <label>Usuario</label>
-          <input id="usuario" type="text" name="usuario" class="form-control">
+          <input id="usuario" type="text" name="usuario" class="form-control" placeholder="Nombre en el sistema" minlength="3" maxlength="25" required>
           
           <label>Contraseña</label>
-          <input id="password" type="password" name="password" class="form-control">
+          <input id="password" type="password" name="password" class="form-control" required>
           
           <label>Repita contraseña</label>
-          <input id="password2" type="password" name="password2" class="form-control">
+          <input id="password2" type="password" name="password2" class="form-control" required>
           
           <label>Estado</label>
-          <input id="estado" type="estado" name="estado" class="form-control">
+          <input id="estado" type="estado" name="estado" class="form-control" required maxlength="25">
         </div>
        
         <div class="modal-footer">
-          
+          <input type="submit" value="Registrar" class="modal-title">
         </div>
       
       </div>
