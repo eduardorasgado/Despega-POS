@@ -48,7 +48,7 @@ switch ($_GET["operation"])
 			"password1" => $password1,
 			"password2" => $password2,
 		];
-		$userRegistered = $usuario->validarUsuarioInputController($datos);
+		$userRegistered = $usuarios->validarUsuarioInputController($datos);
 		//si hay errors en forma de arrays
 		if (is_array($userRegistered)) 
 		{
@@ -59,7 +59,7 @@ switch ($_GET["operation"])
 		else
 		{
 			if ($userRegistered == true) {
-				$usuario->registrarUsuarioController();
+				$usuarios->registrarUsuarioController();
 				$messages[] = "El usuario se registro correctamente";
 			}
 			else if ($userRegistered == false) {
@@ -125,7 +125,7 @@ switch ($_GET["operation"])
 			"password2" => $password2,
 		];
 		
-		$response = $usuario->editarUsuarioController($datos);
+		$response = $usuarios->editarUsuarioController($datos);
 
 		if ($response == true)
 		{
@@ -187,7 +187,7 @@ switch ($_GET["operation"])
 	case 'mostrar':
 		$errors = null;
 		
-		$userToShow = $usuario->getUsuarioController($id_usuario);
+		$userToShow = $usuarios->getUsuarioController($id_usuario);
 		
 		//En caso de no haber usuario
 		if ($userToShow = false) 
@@ -242,11 +242,11 @@ switch ($_GET["operation"])
 
 		$messages = null;
 
-		$response = $usuario->getUsuarioController($id_usuario);
-		
+		$response = $usuarios->getUsuarioController($id_usuario);
+		var_dump($response);
 		if (is_array($response))
 		{
-			$activatedUser = $usuario->editarEstadoController($response[0]["id_usuario"], $estado);
+			$activatedUser = $usuarios->editarEstadoController($response[0]["id_usuario"], $_POST["est"]);
 			if ($activatedUser)
 			{
 				$messages[] = "El usuario ha cambiado de estado.";

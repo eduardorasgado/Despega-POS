@@ -7,7 +7,7 @@ class UsuariosController
 
 	public function showUsuarios()
 	{
-		$usuarios = usuariosModel::getUsuarios("usuarios");
+		$usuarios = UsuariosModel::getUsuarios("usuarios");
 		
 		return $usuarios;
 	}
@@ -30,7 +30,7 @@ class UsuariosController
 				"estado" => $_POST["estado"]
 			];
 
-			$response = usuariosModel::registrarUsuarioModel($datos,"usuarios");
+			$response = UsuariosModel::registrarUsuarioModel($datos,"usuarios");
 
 			return $response;
 		}
@@ -61,7 +61,7 @@ class UsuariosController
 					"estado" => $_POST["estado"]
 				];
 
-				$response = usuariosModel::editarUsuarioModel($datos,"usuarios");
+				$response = UsuariosModel::editarUsuarioModel($datos,"usuarios");
 
 			}
 			else
@@ -76,13 +76,14 @@ class UsuariosController
 
 	public function getUsuarioController($id_usuario)
 	{
-		if (isset($_POST["id_usuario"])) 
+		if (isset($id_usuario)) 
 		{
 			$datos = [
 				"id_usuario" => $id_usuario,
 			];
 
-			$response = usuariosModel::getUsuarioModel($datos,"usuarios");
+			$response = UsuariosModel::getUsuarioModel($datos,"usuarios");
+
 
 			return $response;
 		}
@@ -90,26 +91,24 @@ class UsuariosController
 
 	public function editarEstadoController($id_user, $estado)
 	{
-		if (isset($_POST["id_usuario"]))
+		if (isset($id_user))
 		{
+			//esto se envia via ajax
+			
+			if ($estado == "0")
+			{
+				$estado = 1;
+			}
+			else if ($estado == "1") {
+				$estado = 0;
+			}
+			
 			$datos = [
 				"id_usuario" => $id_user,
 				"estado" => $estado
 			];
 
-			//esto se envia via ajax
-			/*
-			if ($estado == "0")
-			{
-				$estado = 1;
-			}
-			else
-			{
-				$estado = 0;
-			}
-			*/
-
-			$response = usuariosModel::editarEstadoModel($datos,"usuarios");
+			$response = UsuariosModel::editarEstadoModel($datos,"usuarios");
 
 			return $response;
 		}
@@ -122,7 +121,7 @@ class UsuariosController
 			"email" => $email
 		];
 
-		$response = usuariosModel::editarEstadoModel($datos,"usuarios");
+		$response = UsuariosModel::editarEstadoModel($datos,"usuarios");
 
 		return $response;
 	}
@@ -130,7 +129,7 @@ class UsuariosController
 	public function validarUsuarioInputController($datos)
 	{
 		
-		$response = usuariosModel::editarEstadoModel($datos,"usuarios");
+		$response = UsuariosModel::editarEstadoModel($datos,"usuarios");
 
 
 		//si nombre no existe, se guarda usuario

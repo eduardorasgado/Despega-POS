@@ -102,21 +102,21 @@ class UsuariosModel extends Conexion
 	//EDITAR EL ESTADO DEL USUARIO, activa y desactiva
 	//el estado
 
-	public function editarEstadoModel($dato, $tabla)
+	public function editarEstadoModel($datos, $tabla)
 	{
-		$query = "UPDATE $tabla SET (estado= :estado WHERE id_usuario = :id_usuario);";
+
+		$query = "UPDATE $tabla SET estado= :estado WHERE id_usuario = :id_usuario";
 
 		$stmt = Conexion::conexionDatabase()->prepare($query);
 		//Conexion::set_names();
 
-		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
 		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
+		$stmt->bindParam(":id_usuario", $datos["id_usuario"], PDO::PARAM_INT);
 
 		if ($stmt->execute()) 
-		{
+		{	
 			return true;
 		}
-
 		return false;
 	}
 

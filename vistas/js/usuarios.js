@@ -20,7 +20,7 @@ function init()
 }
 
 //funcion para limpiar los campos del formulario
-function limpiarCampos()
+function limpiar()
 {
 	var elements = ["nombres", 
 				"apellido", 
@@ -195,24 +195,27 @@ function editar(e)
 }
 
 //Editar el estado del usuario: activo/inactivo
-function cambiarEstado(id_usuario, estado)
+function cambiarEstado(id_usuario, est)
 {
 	//con esta funcion enviamos via ajax a usuarioAjax la info
 	bootbox.confirm("Está seguro de cambiar estado?", function(result){
 		if (result)
 		{
+
 			$.ajax({
 				url: "../ajax/usuarioAjax.php?operation=activarydesactivar",
 				method: "POST",
 				//toma el valor del id y del estado
 				//el primero es el parametro a enviar, el segundo es el nombre asignado
-				data: {id_usuario:id_usuario, estado:estado},
+				data: {id_usuario:id_usuario, est:est},
 				success: function(data){
 					//si hay exito pasar a tablas recargando asincrono
+
 					$("#usuario_data").DataTable().ajax.reload();
 				}
 			});
 		}
+
 	});
 }
 
