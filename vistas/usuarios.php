@@ -52,6 +52,62 @@
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
 
+<!--/* FORMULARIO VENTANA MODAL */ -->
+
+<div id="usuarioModal" class="modal fade">
+  <div class="modal-dialog">
+    <form action="" method="POST" id="usuario_form">
+      <div  class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Agregar Usuario</h4>
+        </div>
+        
+        <div class="modal-body">
+          
+          <label>Nombres</label>
+          <input type="text" name="nombres" id="nombres" class="form-control" placeholder="Nombre o nombres" required pattern="[a-zA-Z]{0,20}">
+          
+          <label>Apellidos</label>
+          <input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Primero y segundo apellido">
+          
+          <label for="cedula">Cédula</label>
+          <input name="cedula" id="cedula" class="form-control" placeholder="Cédula/ no es requerida" required pattern="[0-9]{0,15}">
+          
+          <label>Telefono</label>
+          <input id="telefono" type="text" name="telefono" class="form-control" placeholder="Teléfono">
+          
+          <label>Correo</label>
+          <input id="correo" type="text" name="correo" class="form-control" placeholder="Correo Electrónico válido">
+          
+          <label>Dirección</label>
+          <input id="direccion" type="text" name="direccion" class="form-control">
+          
+          <label>Cargo</label>
+          <input id="cargo" type="text" name="cargo" class="form-control">
+          
+          <label>Usuario</label>
+          <input id="usuario" type="text" name="usuario" class="form-control">
+          
+          <label>Contraseña</label>
+          <input id="password" type="password" name="password" class="form-control">
+          
+          <label>Repita contraseña</label>
+          <input id="password2" type="password" name="password2" class="form-control">
+          
+          <label>Estado</label>
+          <input id="estado" type="estado" name="estado" class="form-control">
+        </div>
+       
+        <div class="modal-footer">
+          
+        </div>
+      
+      </div>
+    </form>
+  </div>
+</div>
 
 <?php
 
